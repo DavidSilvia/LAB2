@@ -1,0 +1,47 @@
+<html>
+<head> <title> Registro </title>
+<script>
+function vervalores(){ 
+var sAux="";
+var frm = document.getElementById("registro");
+for (i=0;i<frm.elements.length;i++)
+{ sAux += "NOMBRE: " + frm.elements[i].name + " ";
+  sAux += "VALOR: " + frm.elements[i].value + "
+\n" ;
+} 
+alert(sAux);
+} 
+</script> 
+<link rel="STYLESHEET" type="text/css"
+href="busy-city/bc-stylesheet.css">
+</head>
+<body>
+<form id='registro' name='registro' onSubmit='vervalores()' enctype="multipart/form-data">
+<big><big><big><b>Registro</big></big></big></b> <br>
+<br>
+<b>Nombre (*):</b> <input type="text" name="nombre" /><br>
+<br>
+<b>Apellidos (*):</b> <input type="text" name="apellidos" /><br>
+<br>
+<b>Dirección de correo (*):</b> <input type="text" name="direccion" /><br>
+<br>
+<b>Password (*):</b> <input type="password" name="password" /><br>
+<br>
+<b>Número de teléfono (*):</b> <input type="text" name="telefono" /><br>
+<br>
+<b>Especialidad (*):</b><br>
+<input type="radio" name="especialidad" value="IS" /> Ingeniería del Software <br>
+<input type="radio" name="especialidad" value="C" /> Computación <br>
+<input type="radio" name="especialidad" value="IC" /> Ingeniería de Computadores <br>
+<br>
+<b>Tecnologías y herramientas en las que está interesado:</b> <br>
+<input type="checkbox" name="Web" value="Web" /> Web   <input type="checkbox" name="App" value="App" /> App <input type="checkbox" name="Ordenadores" value="Ordenadores" /> Ordenadores<br>
+<input type="checkbox" name="Videojuegos" value="Videojuegos" /> Videojuegos <input type="checkbox" name="Robótica" value="Robótica" /> Robótica <input type="checkbox" name="Smartphones" value="Smartphones" /> Smartphones<br>
+<br>
+<b>Seleccione su foto de perfil:</b><br>
+<input type="file" name="imagen" />
+<br>
+<br>
+<big><input type="submit" name="Registrarse" value="Registrarse" style= "width:150px; height:50px;"/></big>
+</body>
+</html>
