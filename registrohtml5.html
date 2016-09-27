@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head> <title> Registro </title>
+<head>
+<link rel="STYLESHEET" type="text/css"
+href="busy-city/bc-stylesheet.css">
 <script>
 var num = 0;
 
@@ -18,54 +20,7 @@ if(nom.length==0 && ape.length==0 && dircor.length==0 && pass.length==0 && numte
 	alert("Error, rellene los campos obligatorios");
 	return false;
 }
-
-var seleccionado = false;
-for(var i=0; i<espe.length-1; i++){
-	if(espe[i].checked) seleccionado=true;
 }
-if(espe[i].checked){
-		var otratxt = document.getElementById("espec").value;
-		if(otratxt.length==0){
-			alert("Error, debe seleccionar una especialidad");
-			return false;
-		}
-}
-else if(!seleccionado){
-		alert("Error, debe seleccionar una especialidad");
-		return false;
-}
-
-var exprape = /^[A-Z]{0,1}[a-z]+\s[A-Z]{0,1}[a-z]+$/;
-if(!exprape.test(ape)){
-	alert("Error, debe introducir dos apellidos (PE: Garcia Perez)");
-	return false;
-}
-
-if(pass.length<6){
-	alert("Error, la contraseña al menos debe contener 6 caracteres");
-	return false;
-}
-
-var exprdircor = /^[a-z]+[0-9]{3}@ikasle\.ehu\.(es|eus){1}$/;
-if(!exprdircor.test(dircor)){
-	alert("Error, la dirección de correo es incorrecta");
-	return false;
-}
-
-var exprtelf = /^(6|7|8|9){1}[0-9]{8}$/;
-if(!exprtelf.test(numtelf)){
-	alert("Error, el teléfono debe ser de 9 dígitos");
-	return false;
-}
-
-var sAux="";
-var frm = document.getElementById("registro");
-for (i=0;i<frm.elements.length;i++){
-	sAux += "NOMBRE: " + frm.elements[i].name + " ";
-	sAux += "VALOR: " + frm.elements[i].value + "\n" ;
-} 
-alert(sAux);
-} 
 
 function otro(){
 	var ele = document.getElementById("otraespec");
@@ -88,31 +43,29 @@ function pulsaresp(){
 	document.getElementById("otraespec").style.display='none';
 	}
 }
-
 </script>
-<link rel="STYLESHEET" type="text/css"
-href="busy-city/bc-stylesheet.css">
 </head>
+<title> Registro </title>
 <body>
-<form id='registro' name='registro' onSubmit='verificar()'> <!--enctype="multipart/form-data"--> 
+<form id='registro' name='registro' onSubmit='verificar()'>
 <big><big><big><b>Registro</big></big></big></b> <br>
 <br>
-<b>Nombre (*):</b> <input id= 'nombre' type="text" name="nombre" /><br>
+<b>Nombre (*):</b> <input id= 'nombre' type="text" name="nombre" required/><br>
 <br>
-<b>Apellidos (*):</b> <input id= 'apellidos' type="text" name="apellidos" /><br>
+<b>Apellidos (*):</b> <input id= 'apellidos' type="text" name="apellidos" pattern= "^[A-Z]{0,1}[a-z]+\s[A-Z]{0,1}[a-z]+$" required/><br>
 <br>
-<b>Dirección de correo (*):</b> <input id= 'direccion' type="text" name="direccion" /><br>
+<b>Dirección de correo (*):</b> <input id= 'direccion' type="text" name="direccion" pattern="^[a-z]+[0-9]{3}@ikasle\.ehu\.(es|eus){1}$" required/><br>
 <br>
-<b>Password (*):</b> <input id= 'password' type="password" name="password" /><br>
+<b>Password (*):</b> <input id= 'password' type="password" name="password" pattern="^.{6,}$" required/><br>
 <br>
-<b>Número de teléfono (*):</b> <input id= 'telefono' type="text" name="telefono" /><br>
+<b>Número de teléfono (*):</b> <input id= 'telefono' type="text" name="telefono" pattern="^(6|7|8|9){1}[0-9]{8}$" required/><br>
 <br>
 <b>Especialidad (*):</b><br>
-<input id= 'especialidad' type="radio" name="especialidad" value="IS" onclick= 'pulsaresp()' /> Ingeniería del Software <br>
-<input id= 'especialidad' type="radio" name="especialidad" value="C" onclick= 'pulsaresp()'/> Computación <br>
-<input id= 'especialidad' type="radio" name="especialidad" value="IC" onclick= 'pulsaresp()'/> Ingeniería de Computadores <br>
+<input id= 'especialidad' type="radio" name="especialidad" value="IS" onclick='pulsaresp()' checked /> Ingeniería del Software <br>
+<input id= 'especialidad' type="radio" name="especialidad" value="C" onclick='pulsaresp()'/> Computación <br>
+<input id= 'especialidad' type="radio" name="especialidad" value="IC" onclick='pulsaresp()' /> Ingeniería de Computadores <br>
 <input id= 'especialidad' type="radio" name="especialidad" value="Otro" onclick='otro()'/> Otro <br>
-<div id='otraespec'></div>
+<div id='otraespec' ></div>
 <br>
 <b>Tecnologías y herramientas en las que está interesado:</b> <br>
 <table>
@@ -157,6 +110,6 @@ href="busy-city/bc-stylesheet.css">
 <br>
 <big><input type="submit" name="Registrarse" value="Registrarse" style= "width:150px; height:50px;"/></big>
 <br>
-<span><a href='layout.html'>Inicio</a></span>
+<span><a href='layout.html'>Inicio</a></span> 
 </body>
 </html>
