@@ -65,6 +65,7 @@ for (i=0;i<frm.elements.length;i++){
 	sAux += "VALOR: " + frm.elements[i].value + "\n" ;
 } 
 alert(sAux);
+return true;
 } 
 
 function otro(){
@@ -94,7 +95,7 @@ function pulsaresp(){
 href="busy-city/bc-stylesheet.css">
 </head>
 <body>
-<form id='registro' name='registro' onSubmit='verificar()'> <!--enctype="multipart/form-data"--> 
+<form id='registro' name='registro' onSubmit='return verificar()' method="post" action= "registrar.php"> <!--enctype="multipart/form-data"--> 
 <big><big><big><b>Registro</big></big></big></b> <br>
 <br>
 <b>Nombre (*):</b> <input id= 'nombre' type="text" name="nombre" /><br>
@@ -115,18 +116,8 @@ href="busy-city/bc-stylesheet.css">
 <div id='otraespec'></div>
 <br>
 <b>Tecnologías y herramientas en las que está interesado:</b> <br>
-<table>
-<tr>
-<td><input type="checkbox" name="Web" value="Web" /> Web </td>
-<td><input type="checkbox" name="App" value="App" /> App </td>
-<td><input type="checkbox" name="Ordenadores" value="Ordenadores" /> Ordenadores </td>
-</tr>
-<tr>
-<td><input type="checkbox" name="Videojuegos" value="Videojuegos" /> Videojuegos </td>
-<td><input type="checkbox" name="Robótica" value="Robótica" /> Robótica </td>
-<td><input type="checkbox" name="Smartphones" value="Smartphones" /> Smartphones </td>
-</tr>
-</table>
+<textarea rows = "4" cols="35" name="interes">
+</textarea>
 <br>
 <b>Seleccione su foto de perfil:</b><br>
 <input type="file" id="files" name="files[]" multiple />
