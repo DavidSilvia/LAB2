@@ -95,7 +95,7 @@ function pulsaresp(){
 href="busy-city/bc-stylesheet.css">
 </head>
 <body>
-<form id='registro' name='registro' onSubmit='return verificar()' method="post" action= "registrar.php"> <!--enctype="multipart/form-data"--> 
+<form id='registro' name='registro' onsubmit= 'return verificar()'  method="post" action= "RegistrarConFoto.php" enctype= "multipart/form-data">
 <big><big><big><b>Registro</big></big></big></b> <br>
 <br>
 <b>Nombre (*):</b> <input id= 'nombre' type="text" name="nombre" /><br>
@@ -120,7 +120,7 @@ href="busy-city/bc-stylesheet.css">
 </textarea>
 <br>
 <b>Seleccione su foto de perfil:</b><br>
-<input type="file" id="files" name="files[]" multiple />
+<input type="file" id="imagen" name="imagen" multiple />
 <output id="list"></output>
 <script>
   function handleFileSelect(evt) {
@@ -142,7 +142,7 @@ href="busy-city/bc-stylesheet.css">
     }
   }
 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  document.getElementById('imagen').addEventListener('change', handleFileSelect, false);
 </script>
 <br>
 <br>

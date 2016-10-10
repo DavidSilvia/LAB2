@@ -1,1 +1,3 @@
 $link = mysqli_connect("mysql.hostinger.es","u216560962_dmsg","davidsilvia","u216560962_quiz");
+ u216560962_dmsg ha sido establecida a davidsilvia
+  
