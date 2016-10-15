@@ -121,7 +121,7 @@ href="busy-city/bc-stylesheet.css">
 <br>
 <b>Seleccione su foto de perfil:</b><br>
 <input type="file" id="imagen" name="imagen" multiple />
-<output id="list"></output>
+<output id="list" ></output>
 <script>
   function handleFileSelect(evt) {
     var files = evt.target.files;
@@ -134,7 +134,7 @@ href="busy-city/bc-stylesheet.css">
         return function(e) {
           var span = document.createElement('span');
           span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
+                            '" title="', escape(theFile.name), ' width="200" height="200""/>'].join('');
           document.getElementById('list').insertBefore(span, null);
         };
       })(f);
