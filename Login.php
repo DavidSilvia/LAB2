@@ -16,13 +16,21 @@ if (isset($_POST['email'])){
 
 	$email=$_POST['email']; 
 	$pass=$_POST['pass'];
+	date_default_timezone_set('Europe/Madrid');
+	$hora= date('Y-m-d H:i');
 
 	$usuarios = mysqli_query($link,"select * from usuario where Email='$email' and Password='$pass'");
 	
 	$cont= mysqli_num_rows($usuarios); 
 	echo $cont;
 	if($cont==1){
-		header('location: layoutin.html');
+		
+		$sql = "INSERT INTO conexion(email, hora) VALUES ('$email','$hora')";
+		if(!mysqli_query($link, $sql)){
+			die("Error:".mysqli_error($link));
+		}
+		
+		header("location: layoutin.php?correo=".$email);
 	}
 	else {
 		echo "<FONT COLOR=RED>Datos incorrectos !!</FONT>";

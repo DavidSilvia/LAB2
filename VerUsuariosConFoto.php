@@ -5,7 +5,7 @@ href="busy-city/bc-stylesheet.css">
 </head>
 <body>
 <?php
-$link = mysqli_connect("localhost","root","","quiz");
+$link = mysqli_connect("mysql.hostinger.es","u216560962_dmsg","davidsilvia","u216560962_quiz");
 $usuarios = mysqli_query($link, "select * from usuario");
 echo '<table border=1> <tr><th>Nombre</th><th>Apellidos</th><th>Direccion de correo</th><th>Telefono</th><th>Especialidad</th><th>Intereses</th><th>Foto</th></tr>';
 while($row=mysqli_fetch_array($usuarios)){

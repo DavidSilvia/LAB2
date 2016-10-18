@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	<title>Preguntas</title>
+	<title>Bienvenido</title>
     <link rel='stylesheet' type='text/css' href='estilos/style.css' />
 	<link rel='stylesheet' 
 		   type='text/css' 
@@ -12,20 +11,27 @@
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
 		   href='estilos/smartphone.css' />
+		   
+	<script>
+	function submit(){
+		document.getElementByID("myform").submit();
+	}
+	</script>
   </head>
   <body>
+  <form id="myform" method="get">
+  <p> <input type="hidden" id='correo' value="<?php echo $_GET['correo']?>"/>
+  </form>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-		<span class="right"><a href="registro.html">Registrarse</a></span>
       		<span class="right"><a href="logout">Logout</a></span>
-      		<span class="right" style="display:none;"><a href="/logout">LogOut</a></span>
+      		<span><?php echo $_GET['correo']?></span>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layout.html'>Inicio</a></span>
-		<span><a href='quizes'>Preguntas</a></span>
-		<span><a href='InsertarPregunta.php'>Insertar preguntas</a></span>
-		<span><a href='VerPreguntas.php'>Ver preguntas</a></span>
+		<span><a href="InsertarPregunta.php?correo=<?php echo $_GET['correo']?>" onclick="submit()">Insertar preguntas</a></span>
+		<span><a href="VerPreguntas.php?correo=<?php echo $_GET['correo']?>" onclick="submit()">Ver preguntas</a></span>
 		<span><a href='creditos.html'>Creditos</a></span>
 	</nav>
     <section class="main" id="s1">
