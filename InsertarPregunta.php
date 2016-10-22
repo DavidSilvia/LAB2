@@ -9,11 +9,11 @@ href="busy-city/bc-stylesheet.css">
 <p> <b>Pregunta (*):</b> <input type="text" id="pregunta" name="pregunta" />
 <p> <b>Respuesta (*):</b> <input type="text" id="respuesta" name="respuesta" />
 <p> <b>Complejidad :</b> <input type="number" id="complejidad" name="complejidad" min="1" max="5"/>
+<p> <b>Tema (*):</b> <input type="text" id="tema" name="tema" />
 <p> <input type="hidden" name="correo" value="<?php echo $_GET['correo']?>"/>
-<p> <input id="anadir" type="submit" onclick="anadirCorreo()"/>
+<p> <input id="anadir" type="submit"/>
 </form>
 <?php
-
 
 if(isset($_GET['pregunta'])){
 	
@@ -22,15 +22,26 @@ if(isset($_GET['pregunta'])){
 	$pregunta = $_GET['pregunta'];
 	$respuesta = $_GET['respuesta'];
 	$complejidad = $_GET['complejidad'];
+	$tema = $_GET['tema'];
 	
 	if(empty($pregunta) || empty($respuesta)){
 		die("Error: Introduzca los datos obligatorios (*)");
 	}
 	
-	$sql = "INSERT INTO pregunta(email, pregunta, respuesta, complejidad) VALUES ('$email','$pregunta','$respuesta', '$complejidad')";
+	$sql = "INSERT INTO pregunta(email, pregunta, respuesta, complejidad, tema) VALUES ('$email','$pregunta','$respuesta', '$complejidad', '$tema')";
 	if(!mysqli_query($link, $sql)){
 		die("Error:".mysqli_error($link));
 	}
+	
+	$xml = simplexml_load_file('preguntas.xml');
+	$preguntaxml = $xml->addChild('assessmentItem');
+	$p = $preguntaxml->addChild('itemBody');
+	$p->addChild('p', $pregunta);
+	$respuestaxml = $preguntaxml->addChild('correctResponse');
+	$respuestaxml->addChild('value', $respuesta);
+	$preguntaxml->addAttribute('complexity', $complejidad);
+	$preguntaxml->addAttribute('subject', $tema);
+	
 	$numident = mysqli_query($link, "select max(id) from conexion where email='$email'");
 	$numident = mysqli_fetch_row($numident);
 	$numident = $numident[0];
@@ -48,6 +59,13 @@ if(isset($_GET['pregunta'])){
 	
 	echo '<big><i>Ha añadido la pregunta correctamente</i></big>';
 	echo '<p> <a href= "layoutin.php?correo='.$email.'"> Volver </a>';
+	
+	$exito = $xml->asXML('preguntas.xml');
+	if(!$exito){
+		echo '<big>Error: La pregunta no se ha añadido al archivo XML</big>';
+	}else{
+		echo '<p> <a href= "VerPreguntasXML.php"> Ver XML</a>';
+	}
 	
 	mysqli_close($link);
 }

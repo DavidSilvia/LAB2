@@ -1,6 +1,12 @@
 //PARA HOSTINGER
 $link = mysqli_connect("mysql.hostinger.es","u216560962_dmsg","davidsilvia","u216560962_quiz");
 
+InsertarPregunta
+Login
+RegistrarConFoto
+VerPreguntas
+VerUsuariosConFoto
+
 u216560962_dmsg ha sido establecida a davidsilvia
  
 //PARA LOCAL

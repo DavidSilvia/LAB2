@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-10-2016 a las 16:03:08
+-- Tiempo de generación: 22-10-2016 a las 12:00:25
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -41,16 +41,16 @@ CREATE TABLE IF NOT EXISTS `acciones` (
 --
 
 INSERT INTO `acciones` (`idaccion`, `idconexion`, `email`, `tipo`, `hora`, `ip`) VALUES
-(1, 0, '', 'Ver preguntas', '2016-10-17 20:39:00', '0'),
-(2, 0, '', 'Ver preguntas', '2016-10-18 16:18:00', '0'),
-(3, 18, 'dmontllor001@ikasle.ehu.es', 'Insertar pregunta', '2016-10-18 17:45:00', '::1'),
-(4, 0, '', 'Ver preguntas', '2016-10-18 17:45:00', '0.0.0.0'),
-(5, 0, '', 'Ver preguntas', '2016-10-18 17:48:00', '::1'),
-(6, 0, '', 'Ver preguntas', '2016-10-18 17:50:00', '::1'),
-(7, 0, '', 'Ver preguntas', '2016-10-18 17:51:00', '::1'),
-(8, 0, '', 'Ver preguntas', '2016-10-18 17:53:00', '::1'),
-(9, 0, '', 'Ver preguntas', '2016-10-18 17:55:00', '::1'),
-(10, 19, 'dmontllor001@ikasle.ehu.es', 'Ver preguntas', '2016-10-18 17:58:00', '::1');
+(1, 13, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 12:38:00', '::1'),
+(2, 13, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:03:00', '::1'),
+(3, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:06:00', '::1'),
+(4, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:09:00', '::1'),
+(5, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:13:00', '::1'),
+(6, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:25:00', '::1'),
+(7, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:26:00', '::1'),
+(8, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:28:00', '::1'),
+(9, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:50:00', '::1'),
+(10, 14, 'sgarcia182@ikasle.ehu.es', 'Insertar pregunta', '2016-10-22 13:52:00', '::1');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `conexion` (
   `email` varchar(50) NOT NULL,
   `hora` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Volcado de datos para la tabla `conexion`
@@ -82,13 +82,8 @@ INSERT INTO `conexion` (`id`, `email`, `hora`) VALUES
 (10, 'sgarcia182@ikasle.ehu.es', '2016-10-17 18:16:00'),
 (11, 'sgarcia182@ikasle.ehu.es', '2016-10-17 18:22:00'),
 (12, 'sgarcia182@ikasle.ehu.es', '2016-10-17 18:35:00'),
-(13, 'dmontllor001@ikasle.ehu.es', '2016-10-17 19:30:00'),
-(14, 'dmontllor001@ikasle.ehu.es', '2016-10-17 19:47:00'),
-(15, 'dmontllor001@ikasle.ehu.es', '2016-10-17 20:09:00'),
-(16, 'dmontllor001@ikasle.ehu.es', '2016-10-17 20:36:00'),
-(17, 'dmontllor001@ikasle.ehu.es', '2016-10-18 16:06:00'),
-(18, 'dmontllor001@ikasle.ehu.es', '2016-10-18 17:30:00'),
-(19, 'dmontllor001@ikasle.ehu.es', '2016-10-18 17:58:00');
+(13, 'sgarcia182@ikasle.ehu.es', '2016-10-22 12:38:00'),
+(14, 'sgarcia182@ikasle.ehu.es', '2016-10-22 13:05:00');
 
 -- --------------------------------------------------------
 
@@ -102,47 +97,19 @@ CREATE TABLE IF NOT EXISTS `pregunta` (
   `pregunta` varchar(50) CHARACTER SET utf8 NOT NULL,
   `respuesta` varchar(50) CHARACTER SET utf8 NOT NULL,
   `complejidad` int(11) NOT NULL,
+  `tema` text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`numero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Volcado de datos para la tabla `pregunta`
 --
 
-INSERT INTO `pregunta` (`numero`, `email`, `pregunta`, `respuesta`, `complejidad`) VALUES
-(1, 'dmontllor001@ikasle.ehu.es', '¿Quién ha ganado el premio nobel de literatura en ', 'Bob Dylan', 4),
-(2, 'sgarcia182@ikasle.ehu.es', '¿Qué hay para comer?', 'Alubias', 3),
-(4, 'dmontllor001@ikasle.ehu.es//', '¿Qué significa FISS?', 'Facultad de informática de san sebastián', 1),
-(6, 'dmontllor001@ikasle.ehu.es//', 'pregunta1', 'pregunta1', 1),
-(7, 'dmontllor001@ikasle.ehu.es//', 'pregunta2', 'pregunta2', 1),
-(8, 'dmontllor001@ikasle.ehu.es//', 'pregunta2', 'pregunta2', 1),
-(9, 'dmontllor001@ikasle.ehu.es//', 'pregunta2', 'pregunta2', 1),
-(10, '', 'pra', 'fasdpa', 1),
-(11, '', 'adsfasdf', 'asdf', 0),
-(12, '', 'aas', 'as', 1),
-(13, '', 'asd', 'asdf', 1),
-(14, '', 'd', 'd', 1),
-(15, '', 'asdf', 'fdas', 1),
-(16, '', 'aaa', 'aaa', 1),
-(17, '', 'asdf', 'adsfs', 1),
-(18, '', 'aaa', 'aaa', 1),
-(19, 'dmontllor001@ikasle.ehu.es', 'fda', 'sfd', 1),
-(20, 'dmontllor001@ikasle.ehu.es', 'fda', 'sfd', 1),
-(21, 'dmontllor001@ikasle.ehu.es', 'fda', 'sfd', 1),
-(22, 'dmontllor001@ikasle.ehu.es', 'fda', 'sfd', 1),
-(23, 'dmontllor001@ikasle.ehu.es', 'aaa', 'aaa', 1),
-(24, 'dmontllor001@ikasle.ehu.es', 'asdf', 'asdf', 1),
-(25, 'dmontllor001@ikasle.ehu.es', 'jgf', 'fcvgf', 2),
-(26, 'dmontllor001@ikasle.ehu.es', 'jgf', 'fcvgf', 2),
-(27, 'dmontllor001@ikasle.ehu.es', 'hhhh', 'jjjj', 2),
-(28, 'dmontllor001@ikasle.ehu.es', 'fff', 'fff', 3),
-(29, 'dmontllor001@ikasle.ehu.es', 'ijoi', 'dcft', 3),
-(30, 'dmontllor001@ikasle.ehu.es', 'ijoi', 'dcft', 3),
-(31, 'dmontllor001@ikasle.ehu.es', 'asdf', 'asdf', 1),
-(32, 'dmontllor001@ikasle.ehu.es', 'asdf', 'asdf', 1),
-(33, 'dmontllor001@ikasle.ehu.es', 'asdf', 'asdf', 1),
-(34, 'dmontllor001@ikasle.ehu.es', 'f', 'f', 1),
-(35, 'dmontllor001@ikasle.ehu.es', 'u', 'u', 1);
+INSERT INTO `pregunta` (`numero`, `email`, `pregunta`, `respuesta`, `complejidad`, `tema`) VALUES
+(1, 'dmontllor001@ikasle.ehu.es', '¿Quién ha ganado el premio nobel de literatura en ', 'Bob Dylan', 4, ''),
+(2, 'sgarcia182@ikasle.ehu.es', '¿Qué hay para comer?', 'Alubias', 3, ''),
+(3, '', '¿quién invento la web?', 'Tim Berners-Lee', 4, ''),
+(13, 'sgarcia182@ikasle.ehu.es', 'Mañana hay clase?', 'No', 2, 'SW');
 
 -- --------------------------------------------------------
 
