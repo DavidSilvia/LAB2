@@ -1,18 +1,3 @@
-<html>
-<head><title>Insertar preguntas</title> 
-<link rel="STYLESHEET" type="text/css"
-href="busy-city/bc-stylesheet.css">
-</head>
-<body>
-<form action="InsertarPregunta.php?correo=<?php echo $_GET['correo']?>" method="get">
-<h2>Añadir una pregunta </h2>
-<p> <b>Pregunta (*):</b> <input type="text" id="pregunta" name="pregunta" />
-<p> <b>Respuesta (*):</b> <input type="text" id="respuesta" name="respuesta" />
-<p> <b>Complejidad :</b> <input type="number" id="complejidad" name="complejidad" min="1" max="5"/>
-<p> <b>Tema (*):</b> <input type="text" id="tema" name="tema" />
-<p> <input type="hidden" name="correo" value="<?php echo $_GET['correo']?>"/>
-<p> <input id="anadir" type="submit"/>
-</form>
 <?php
 
 if(isset($_GET['pregunta'])){
@@ -70,5 +55,3 @@ if(isset($_GET['pregunta'])){
 	mysqli_close($link);
 }
 ?>
-</body>
-</html>

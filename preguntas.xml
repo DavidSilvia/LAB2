@@ -21,4 +21,4 @@
 			</value>
 		</correctResponse>
 	</assessmentItem>
-<assessmentItem complexity="1" subject="SW"><itemBody><p/></itemBody><correctResponse><value>No</value></correctResponse></assessmentItem><assessmentItem complexity="2" subject="SW"><itemBody><p>Ma&#x61BA1; hay clase?</p></itemBody><correctResponse><value>No</value></correctResponse></assessmentItem></assessmentItems>
+<assessmentItem complexity="1" subject="SW"><itemBody><p/></itemBody><correctResponse><value>No</value></correctResponse></assessmentItem><assessmentItem complexity="2" subject="SW"><itemBody><p>Ma&#x61BA1; hay clase?</p></itemBody><correctResponse><value>No</value></correctResponse></assessmentItem><assessmentItem complexity="3" subject="q"><itemBody><p>q</p></itemBody><correctResponse><value>q</value></correctResponse></assessmentItem></assessmentItems>

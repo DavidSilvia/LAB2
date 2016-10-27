@@ -30,8 +30,7 @@
     </header>
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layout.html'>Inicio</a></span>
-		<span><a href="InsertarPregunta.php?correo=<?php echo $_GET['correo']?>" onclick="submit()">Insertar preguntas</a></span>
-		<span><a href="VerPreguntas.php?correo=<?php echo $_GET['correo']?>" onclick="submit()">Ver preguntas</a></span>
+		<span><a href="GestionPreguntas.php?correo=<?php echo $_GET['correo']?>" onclick="submit()">Gestionar preguntas</a></span>
 		<span><a href='creditos.html'>Creditos</a></span>
 	</nav>
     <section class="main" id="s1">
