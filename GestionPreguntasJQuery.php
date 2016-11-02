@@ -1,6 +1,7 @@
 <html>
 <head><title>Gestionar preguntas</title> 
 <link rel="STYLESHEET" type="text/css" href="busy-city/bc-stylesheet.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 setInterval(carga, 5000);
 function insertarpregunta(){
@@ -9,13 +10,13 @@ function insertarpregunta(){
 		}else{
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
-xmlhttp.onreadystatechange=function(){
-		if(xmlhttp.readyState==4 && xmlhttp.status==200){
-			document.getElementById("insertar").innerHTML=xmlhttp.responseText;
-		}
-}	
-xmlhttp.open("GET", "InsertarPregunta.php?correo="+document.getElementById("correo").value+"&pregunta="+document.getElementById("pregunta").value+"&respuesta="+document.getElementById("respuesta").value+"&complejidad="+document.getElementById("complejidad").value+"&tema="+document.getElementById("tema").value, true);
-xmlhttp.send();
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){
+				document.getElementById("insertar").innerHTML=xmlhttp.responseText;
+			}
+		}	
+		xmlhttp.open("GET", "InsertarPregunta.php?correo="+document.getElementById("correo").value+"&pregunta="+document.getElementById("pregunta").value+"&respuesta="+document.getElementById("respuesta").value+"&complejidad="+document.getElementById("complejidad").value+"&tema="+document.getElementById("tema").value, true);
+		xmlhttp.send();
 }
 
 function verpreguntas(){
@@ -24,36 +25,31 @@ function verpreguntas(){
 	}else{
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-xmlhttp.onreadystatechange=function(){
-	if(xmlhttp.readyState==4 && xmlhttp.status==200){
-		document.getElementById("ver").innerHTML=xmlhttp.responseText;
-	}
-}		
-xmlhttp.open("GET", "VerPreguntasXML.php", true);
-xmlhttp.send();
+	xmlhttp.onreadystatechange=function(){
+		if(xmlhttp.readyState==4 && xmlhttp.status==200){
+			document.getElementById("ver").innerHTML=xmlhttp.responseText;
+		}
+	}		
+	xmlhttp.open("GET", "VerPreguntasXML.php", true);
+	xmlhttp.send();
 }
 
 function carga(){
-	
 	var elcorreo = "<?php $c=$_GET['correo']; echo $c;?>";
-	if(window.XMLHttpRequest){
-			xmlhttp = new XMLHttpRequest();
-	}else{
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function(){
-		if(xmlhttp.readyState==4 && xmlhttp.status==200){
-			document.getElementById("numpreg").innerHTML=xmlhttp.responseText;
-		}
-	}	
-	xmlhttp.open("GET", "MostrarNumPreg.php?correo="+elcorreo, true);
-	xmlhttp.send();	
+	$.ajax({
+		url:"MostrarNumPreg.php",
+		data:{correo : elcorreo},
+		method:"GET",
+		datatype:"json",
+		success: function(datos){
+			$('#numpreg').html(datos);
+		},
+	});
 }
-
 </script>
 </head>
-<body>
-<form onload="carga()">
+<body onload="carga()">
+<form>
 <h2>Añadir una pregunta </h2>
 <p> 
 <div id="numpreg"></div>

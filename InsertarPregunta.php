@@ -48,8 +48,6 @@ if(isset($_GET['pregunta'])){
 	$exito = $xml->asXML('preguntas.xml');
 	if(!$exito){
 		echo '<big>Error: La pregunta no se ha añadido al archivo XML</big>';
-	}else{
-		echo '<p> <a href= "VerPreguntasXML.php"> Ver XML</a>';
 	}
 	
 	mysqli_close($link);

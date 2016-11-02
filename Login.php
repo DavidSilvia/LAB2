@@ -1,6 +1,5 @@
 <head> 
-<link rel="STYLESHEET" type="text/css"
-href="busy-city/bc-stylesheet.css">
+<link rel="STYLESHEET" type="text/css" href="busy-city/bc-stylesheet.css">
 </head>
 <body>
 <form action="Login.php" method="post">
