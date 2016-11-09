@@ -2,7 +2,7 @@
 
 if(isset($_GET['pregunta'])){
 	
-	$link = mysqli_connect("mysql.hostinger.es","u216560962_dmsg","davidsilvia","u216560962_quiz") or die(mysql_error());
+	$link = mysqli_connect("localhost","root","","quiz") or die(mysql_error());
 	$email=$_GET['correo'];
 	$pregunta = $_GET['pregunta'];
 	$respuesta = $_GET['respuesta'];

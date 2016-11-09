@@ -65,7 +65,7 @@ function carga(){
 <p> <input type="button" id="anadir" value ="Insertar pregunta" onclick = "insertarpregunta()"/>
 <p> <input type="button" id="verpreg" value ="Ver preguntas" onclick = "verpreguntas()"/>
 <div id="insertar"></div>
-<div id="ver"<b>Las preguntas se veran aqui</b></div>
+<div id="ver"><b>Las preguntas se veran aqui</b></div>
 
 </form>
 
