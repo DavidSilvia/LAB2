@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 if(isset($_GET['pregunta'])){
 	
 	$link = mysqli_connect("localhost","root","","quiz") or die(mysql_error());
-	$email=$_GET['correo'];
+	$email=$_SESSION['correo'];
 	$pregunta = $_GET['pregunta'];
 	$respuesta = $_GET['respuesta'];
 	$complejidad = $_GET['complejidad'];
@@ -42,8 +42,7 @@ if(isset($_GET['pregunta'])){
 		die("Error:".mysqli_error($link));
 	}
 	
-	echo '<big><i>Ha añadido la pregunta correctamente</i></big>';
-	echo '<p> <a href= "layoutin.php?correo='.$email.'"> Volver </a>';
+	echo '<b><big><i>Ha añadido la pregunta correctamente</i></big></b>';
 	
 	$exito = $xml->asXML('preguntas.xml');
 	if(!$exito){

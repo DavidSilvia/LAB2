@@ -1,158 +1,171 @@
 <!DOCTYPE html>
 <html>
-<head> <title> Registro </title>
+<head>
+	<title> Registro </title>
+	<link rel="STYLESHEET" type="text/css"
+	href="Estilos.css">
+	<script>
+		var num = 0;
 
-<script>
-var num = 0;
+		function verificar(){
 
-function verificar(){
+			var nom =  document.getElementById("nombre").value;
+			var ape =  document.getElementById("apellidos").value;
+			var dircor =  document.getElementById("direccion").value;
+			var pass =  document.getElementById("password").value;
+			var passrepe = document.getElementById("passwordrepe").value;
+			var numtelf =  document.getElementById("telefono").value;
+			var espe = document.getElementsByName("especialidad");
+			var otraespec = document.getElementById("otraespec");
 
-var nom =  document.getElementById("nombre").value;
-var ape =  document.getElementById("apellidos").value;
-var dircor =  document.getElementById("direccion").value;
-var pass =  document.getElementById("password").value;
-var numtelf =  document.getElementById("telefono").value;
-var espe = document.getElementsByName("especialidad");
-var otraespec = document.getElementById("otraespec");
+			if(nom.length==0){ 
+				alert("Error, no has puesto un nombre");
+				return false;
+			}
 
-if(nom.length==0){ 
-	alert("Error, no has puesto un nombre");
-	return false;
-}
+			var seleccionado = false;
+			for(var i=0; i<espe.length-1; i++){
+				if(espe[i].checked) seleccionado=true;
+			}
+			if(espe[i].checked){
+				var otratxt = document.getElementById("espec").value;
+				if(otratxt.length==0){
+					alert("Error, debe seleccionar una especialidad");
+					return false;
+				}
+			}
+			else if(!seleccionado){
+				alert("Error, debe seleccionar una especialidad");
+				return false;
+			}
 
-var seleccionado = false;
-for(var i=0; i<espe.length-1; i++){
-	if(espe[i].checked) seleccionado=true;
-}
-if(espe[i].checked){
-		var otratxt = document.getElementById("espec").value;
-		if(otratxt.length==0){
-			alert("Error, debe seleccionar una especialidad");
-			return false;
+			var exprape = /^[A-Z]{0,1}[a-z]+\s[A-Z]{0,1}[a-z]+$/;
+			if(!exprape.test(ape)){
+				alert("Error, debe introducir dos apellidos (PE: Garcia Perez)");
+				return false;
+			}
+
+			if(pass.length<6){
+				alert("Error, la contraseña al menos debe contener 6 caracteres");
+				return false;
+			}
+
+			if((pass.localeCompare(passrepe))!=0){
+				alert("Error, las contraseñas no coinciden");
+				return false;
+			}
+
+			var exprdircor = /^[a-z]+[0-9]{3}@ikasle\.ehu\.(es|eus){1}$/;
+			if(!exprdircor.test(dircor)){
+				alert("Error, la dirección de correo es incorrecta");
+				return false;
+			}
+
+			var exprtelf = /^(6|7|8|9){1}[0-9]{8}$/;
+			if(!exprtelf.test(numtelf)){
+				alert("Error, el teléfono debe ser de 9 dígitos");
+				return false;
+			}
+
+			var sAux="";
+			var frm = document.getElementById("registro");
+			for (i=0;i<frm.elements.length;i++){
+				sAux += "NOMBRE: " + frm.elements[i].name + " ";
+				sAux += "VALOR: " + frm.elements[i].value + "\n" ;
+			} 
+			alert(sAux);
+			return true;
+		} 
+
+		function otro(){
+			var ele = document.getElementById("otraespec");
+			var espec; 
+			if(num==0){
+				espec = document.createElement("input");
+				espec.setAttribute("type","text");
+				espec.setAttribute("id","espec");
+				num = 1;
+			}
+			else {
+				espec = document.getElementById("espec");
+			}
+			ele.appendChild(espec);
+			document.getElementById("otraespec").style.display='block';
 		}
-}
-else if(!seleccionado){
-		alert("Error, debe seleccionar una especialidad");
-		return false;
-}
 
-var exprape = /^[A-Z]{0,1}[a-z]+\s[A-Z]{0,1}[a-z]+$/;
-if(!exprape.test(ape)){
-	alert("Error, debe introducir dos apellidos (PE: Garcia Perez)");
-	return false;
-}
+		function pulsaresp(){
+			if(num==1){
+				document.getElementById("otraespec").style.display='none';
+			}
 
-if(pass.length<6){
-	alert("Error, la contraseña al menos debe contener 6 caracteres");
-	return false;
-}
+		}
 
-var exprdircor = /^[a-z]+[0-9]{3}@ikasle\.ehu\.(es|eus){1}$/;
-if(!exprdircor.test(dircor)){
-	alert("Error, la dirección de correo es incorrecta");
-	return false;
-}
-
-var exprtelf = /^(6|7|8|9){1}[0-9]{8}$/;
-if(!exprtelf.test(numtelf)){
-	alert("Error, el teléfono debe ser de 9 dígitos");
-	return false;
-}
-
-var sAux="";
-var frm = document.getElementById("registro");
-for (i=0;i<frm.elements.length;i++){
-	sAux += "NOMBRE: " + frm.elements[i].name + " ";
-	sAux += "VALOR: " + frm.elements[i].value + "\n" ;
-} 
-alert(sAux);
-return true;
-} 
-
-function otro(){
-	var ele = document.getElementById("otraespec");
-	var espec; 
-	if(num==0){
-	espec = document.createElement("input");
-	espec.setAttribute("type","text");
-	espec.setAttribute("id","espec");
-	num = 1;
-	}
-	else {
-	espec = document.getElementById("espec");
-	}
-	ele.appendChild(espec);
-	document.getElementById("otraespec").style.display='block';
-}
-
-function pulsaresp(){
-	if(num==1){
-	document.getElementById("otraespec").style.display='none';
-	}
-
-}
-
-</script>
-<link rel="STYLESHEET" type="text/css"
-href="busy-city/bc-stylesheet.css">
+	</script>
 </head>
 <body>
-<form id='registro' name='registro' onsubmit= 'return verificar()'  method="post" action= "RegistrarConFoto.php" enctype= "multipart/form-data">
-<big><big><big><b>Registro</big></big></big></b> <br>
-<br>
-<b>Nombre (*):</b> <input id= 'nombre' type="text" name="nombre" /><br>
-<br>
-<b>Apellidos (*):</b> <input id= 'apellidos' type="text" name="apellidos" /><br>
-<br>
-<b>Dirección de correo (*):</b> <input id= 'direccion' type="text" name="direccion" /><br>
-<br>
-<b>El ticket es 1234 <br>
-<b>Ticket(*):</b> <input id= 'ticket' type="text" name="ticket" /><br>
-<br>
-<b>Password (*):</b> <input id= 'password' type="password" name="password" /><br>
-<br>
-<b>Número de teléfono (*):</b> <input id= 'telefono' type="text" name="telefono" /><br>
-<br>
-<b>Especialidad (*):</b><br>
-<input id= 'especialidad' type="radio" name="especialidad" value="IS" onclick= 'pulsaresp()' checked /> Ingeniería del Software <br>
-<input id= 'especialidad' type="radio" name="especialidad" value="C" onclick= 'pulsaresp()'/> Computación <br>
-<input id= 'especialidad' type="radio" name="especialidad" value="IC" onclick= 'pulsaresp()'/> Ingeniería de Computadores <br>
-<input id= 'especialidad' type="radio" name="especialidad" value="Otro" onclick='otro()'/> Otro <br>
-<div id='otraespec'></div>
-<br>
-<b>Tecnologías y herramientas en las que está interesado:</b> <br>
-<textarea rows = "4" cols="35" name="interes">
-</textarea>
-<br>
-<b>Seleccione su foto de perfil:</b><br>
-<input type="file" id="imagen" name="imagen" multiple />
-<output id="list" ></output>
-<script>
-  function handleFileSelect(evt) {
-    var files = evt.target.files;
-    for (var i = 0, f; f = files[i]; i++) {
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-      var reader = new FileReader();
-      reader.onload = (function(theFile) {
-        return function(e) {
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), ' width="200" height="200""/>'].join('');
-          document.getElementById('list').insertBefore(span, null);
-        };
-      })(f);
-      reader.readAsDataURL(f);
-    }
-  }
+	<form id='registro' name='registro' onsubmit= 'return verificar()'  method="post" action= "RegistrarConFoto.php" enctype= "multipart/form-data">
+		<big><big><big><b>Registro</b></big></big></big><br>
+		<br>
+		<b>Nombre (*):</b> <input id= 'nombre' type="text" name="nombre" /><br>
+		<br>
+		<b>Apellidos (*):</b> <input id= 'apellidos' type="text" name="apellidos" /><br>
+		<br>
+		<b>Dirección de correo (*):</b> <input id= 'direccion' type="text" name="direccion" /><br>
+		<br>
+		<b>El ticket es 1234 </b><br>
+		<b>Ticket(*):</b> <input id= 'ticket' type="text" name="ticket" /><br>
+		<br>
+		<b>Password (*):</b> <input id= 'password' type="password" name="password" /><br>
+		<br>
+		<b>Repetir password (*):</b> <input id= 'passwordrepe' type="password" name="passwordrepe" /><br>
+		<br>
+		<b>Número de teléfono (*):</b> <input id= 'telefono' type="text" name="telefono" /><br>
+		<br>
+		<b>Especialidad (*):</b><br>
+		<input id= 'especialidad' type="radio" name="especialidad" value="IS" onclick= 'pulsaresp()' checked /> Ingeniería del Software <br>
+		<input id= 'especialidad' type="radio" name="especialidad" value="C" onclick= 'pulsaresp()'/> Computación <br>
+		<input id= 'especialidad' type="radio" name="especialidad" value="IC" onclick= 'pulsaresp()'/> Ingeniería de Computadores <br>
+		<input id= 'especialidad' type="radio" name="especialidad" value="Otro" onclick='otro()'/> Otro <br>
+		
+		<div id='otraespec'></div>
+		<br>
+		<b>Tecnologías y herramientas en las que está interesado:</b> <br>
+		<textarea rows = "4" cols="35" name="interes">
+		</textarea>
+		<br>
+		<br>
+		<b>Seleccione su foto de perfil:</b><br>
+		<input type="file" id="imagen" name="imagen" multiple />
+		<output id="list" ></output>
+		<script>
+			function handleFileSelect(evt) {
+				var files = evt.target.files;
+				for (var i = 0, f; f = files[i]; i++) {
+					if (!f.type.match('image.*')) {
+						continue;
+					}
+					var reader = new FileReader();
+					reader.onload = (function(theFile) {
+						return function(e) {
+							var span = document.createElement('span');
+							span.innerHTML = ['<img class="thumb" src="', e.target.result,
+							'" title="', escape(theFile.name), ' width="200" height="200""/>'].join('');
+							document.getElementById('list').insertBefore(span, null);
+						};
+					})(f);
+					reader.readAsDataURL(f);
+				}
+			}
 
-  document.getElementById('imagen').addEventListener('change', handleFileSelect, false);
-</script>
-<br>
-<br>
-<big><input type="submit" name="Registrarse" value="Registrarse" style= "width:150px; height:50px;"/></big>
-<br>
-<span><a href='layout.html'>Inicio</a></span>
-</body>
-</html>
+			document.getElementById('imagen').addEventListener('change', handleFileSelect, false);
+		</script>
+		<br>
+		<br>
+		<big><input type="submit" name="Registrarse" value="Registrarse" class="boton"/></big>
+		<br>
+		<br>
+		<span><a href='layout.html' style="font-size: 30px">Inicio</a></span>
+		<br>
+		<br>
+	</body>
+	</html>

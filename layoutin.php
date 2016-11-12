@@ -1,5 +1,16 @@
 <html>
+<?php
+session_start();
+?>
   <head>
+ <!-- <script>
+  var tipo = <?php echo $_SESSION['usuario'];?>;
+  if(tipo.localeCompare('0')==0){
+	  document.getElementById("rp").style.display = "";
+  }else if(tipo.localeCompare('1')==0){
+	  document.getElementById("gp").style.display = "";
+  }-->
+  </script>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
 	<title>Bienvenido</title>
     <link rel='stylesheet' type='text/css' href='estilos/style.css' />
@@ -12,29 +23,26 @@
 		   media='only screen and (max-width: 480px)'
 		   href='estilos/smartphone.css' />
 		   
-	<script>
-	function submit(){
-		document.getElementByID("myform").submit();
-	}
-	</script>
   </head>
   <body>
-  <form id="myform" method="get">
-  <p> <input type="hidden" id='correo' value="<?php echo $_GET['correo']?>"/>
-  </form>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-      		<span class="right"><a href="logout">Logout</a></span>
-      		<span><?php echo $_GET['correo']?></span>
+      		<span class="right"><a href="logout.php">Logout</a></span>
+      		<span><?php echo $_SESSION['correo'];?></span>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href='layout.html'>Inicio</a></span>
-		<span><a href="GestionPreguntasJQuery.php?correo=<?php echo $_GET['correo']?>" onclick="submit()">Gestionar preguntas</a></span>
-		<span><a href='creditos.html'>Creditos</a></span>
+	<?php
+	$tipo = $_SESSION['usuario'];
+	if(strstr($tipo, '1')!=null){
+		echo '<span><a href="GestionPreguntas.php" id="gp">Gestionar preguntas</a></span>';
+	}else if(strstr($tipo, '0')!=null)
+		echo '<span><a href="RevisarPreguntas.php" id="rp">Revisar preguntas</a></span>';
+	?>
+	<span><a href='creditos.php'>Creditos</a></span>
 	</nav>
     <section class="main" id="s1">
-    
+   
 	<div>
 	
 	Aqui se visualizan las preguntas y los creditos ...

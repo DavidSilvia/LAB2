@@ -1,12 +1,10 @@
 <html>
 <head><title>Registrado</title> 
-<link rel="STYLESHEET" type="text/css"
-href="busy-city/bc-stylesheet.css">
+<link rel="STYLESHEET" type="text/css" href="Estilos.css">
 <meta charset="UTF-8">
 </head>
 <body>
 <?php
-
 //incluimos la clase nusoap.php
 require_once('../ProyectoSW-master/lib/nusoap.php');
 require_once('../ProyectoSW-master/lib/class.wsdlcache.php');

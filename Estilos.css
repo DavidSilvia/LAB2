@@ -1,0 +1,14 @@
+.titulo{
+	font-size:300%;
+}
+body{
+	background-image:url("fondo.jpg");
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	text-align:center;
+}
+.boton{
+	background-color: yellowgreen;
+	font-size: 20px;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-weight: bold;
+}

@@ -1,5 +1,5 @@
 <head> 
-<link rel="STYLESHEET" type="text/css" href="busy-city/bc-stylesheet.css">
+<link rel="STYLESHEET" type="text/css" href="Estilos.css">
 </head>
 <body>
 <form action="Login.php" method="post">
@@ -7,6 +7,7 @@
 <p> Email : <input type="email" required name="email" size="21" value="" />
 <p> Password: <input type="password" required name="pass" size="21" value="" />
 <p> <input id="submit" type="submit" />
+<p><a href = 'layout.html' style="font-size: 15px">Atras</a><br/></p>
 </form>
 <?php
 if (isset($_POST['email'])){
@@ -28,8 +29,15 @@ if (isset($_POST['email'])){
 		if(!mysqli_query($link, $sql)){
 			die("Error:".mysqli_error($link));
 		}
-		
-		header("location: layoutin.php?correo=".$email);
+		session_start();
+		if(strstr($email, 'web000@ehu.es') != null){
+			$_SESSION['usuario'] = 0;
+		}
+		else{
+			$_SESSION['usuario'] = 1;
+		}
+		$_SESSION['correo'] = $email;
+		header("location: layoutin.php");
 	}
 	else {
 		echo "<FONT COLOR=RED>Datos incorrectos !!</FONT>";

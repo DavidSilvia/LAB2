@@ -7,6 +7,8 @@ RegistrarConFoto
 VerPreguntas
 VerUsuariosConFoto
 MostrarNumPreg
+RevisarPreguntas
+Preguntas
 
 u216560962_dmsg ha sido establecida a davidsilvia
  
