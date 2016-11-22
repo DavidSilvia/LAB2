@@ -34,9 +34,9 @@ session_start();
 	<nav class='main' id='n1' role='navigation'>
 	<?php
 	$tipo = $_SESSION['usuario'];
-	if(strstr($tipo, '1')!=null){
+	if(strstr($tipo, 'alumno')!=null){
 		echo '<span><a href="GestionPreguntas.php" id="gp">Gestionar preguntas</a></span>';
-	}else if(strstr($tipo, '0')!=null)
+	}else if(strstr($tipo, 'profesor')!=null)
 		echo '<span><a href="RevisarPreguntas.php" id="rp">Revisar preguntas</a></span>';
 	?>
 	<span><a href='creditos.php'>Creditos</a></span>

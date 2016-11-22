@@ -40,7 +40,7 @@
 <body>
 	<?php
 	session_start();
-	if(!isset($_SESSION['correo'])){
+	if(!isset($_SESSION['correo']) || strcmp($_SESSION['usuario'], 'alumno')==0){
 		header("Location:Login.php");
 	}
 	?>

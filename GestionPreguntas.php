@@ -3,7 +3,7 @@
 	<link rel="STYLESHEET" type="text/css" href="Estilos.css">
 	<?php
 	session_start();
-	if(!isset($_SESSION['correo'])){
+	if(!isset($_SESSION['correo']) || strcmp($_SESSION['usuario'], 'profesor')==0){
 		header("Location:Login.php");
 	}
 	?>

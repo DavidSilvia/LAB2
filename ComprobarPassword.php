@@ -14,7 +14,7 @@ $server->register('comprobarPassword');//, array('x'=>'xsd:string'), array('z'=>
 //implementamos la función
 function comprobarPassword ($x, $y){
 	if($y == 1234){
-		$fp=fopen("http://localhost/ProyectoSW-master/toppasswords.txt", "r") or exit("No se abre el fichero");
+		$fp=fopen("http://localhost//ProyectoSW-master/toppasswords.txt", "r") or exit("No se abre el fichero");
 		while(!feof($fp)){
 			$linea = fgets($fp);
 			if(strstr($linea, $x)!=null){

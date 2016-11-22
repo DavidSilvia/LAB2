@@ -1,4 +1,4 @@
-<head> 
+ <head> 
 <link rel="STYLESHEET" type="text/css" href="Estilos.css">
 </head>
 <body>
@@ -31,10 +31,10 @@ if (isset($_POST['email'])){
 		}
 		session_start();
 		if(strstr($email, 'web000@ehu.es') != null){
-			$_SESSION['usuario'] = 0;
+			$_SESSION['usuario'] = 'profesor';
 		}
 		else{
-			$_SESSION['usuario'] = 1;
+			$_SESSION['usuario'] = 'alumno';
 		}
 		$_SESSION['correo'] = $email;
 		header("location: layoutin.php");
